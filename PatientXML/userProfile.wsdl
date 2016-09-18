@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.anirudh.org/userProfile/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="userProfile"
+	targetNamespace="http://www.anirudh.org/userProfile/"
+	xmlns:upSchema="http://www.anirudh.org/user/schema/user.xsd">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.anirudh.org/userProfile/">
+		<xsd:import namespace="http://www.anirudh.org/user/schema/user.xsd" schemaLocation="user.xsd"></xsd:import>
+			<xsd:element name="getUserProfile">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="userName" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getUserProfileResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="userProfile" type="upSchema:user" />						
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		
+            <xsd:complexType name="UserDetail"></xsd:complexType>
+        </xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="getUserProfileRequest">
+		<wsdl:part element="tns:getUserProfile" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getUserProfileResponse">
+		<wsdl:part element="tns:getUserProfileResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:portType name="userProfile">
+		<wsdl:operation name="getUserProfile">
+			<wsdl:input message="tns:getUserProfileRequest" />
+			<wsdl:output message="tns:getUserProfileResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="userProfileSOAP" type="tns:userProfile">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getUserProfile">
+			<soap:operation soapAction="http://www.anirudh.org/userProfile/getUserProfile" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="userProfile">
+		<wsdl:port binding="tns:userProfileSOAP" name="userProfileSOAP">
+			<soap:address location="http://www.localhost.com/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.anirudhdhawan.org/Patient"
+	xmlns:tns="http://www.anirudhdhawan.org/Patient" elementFormDefault="qualified">
+
+    <element name="Patient" type="tns:Patient"></element>
+
+    <complexType name="Patient">
+    	<sequence>
+    		<element name="name" type="tns:PatientName" maxOccurs="1"></element>
+    		<element name="age" type="int" maxOccurs="unbounded"></element>
+    		<element name="dob" type="date"></element>
+    		<element name="email" type="string"></element>
+    		<element name="gender" type="tns:GenderMF"></element>
+    		<element name="phone" type="string"></element>
+    		<element name="paymentOptions" type="tns:Payment"></element>
+    	</sequence>
+    	<attribute name="id" type="tns:PatientID"></attribute>
+    </complexType>
+    
+    <simpleType name="PatientName">
+    	<restriction base="string">
+    		<minLength value="1"></minLength>
+    		<maxLength value="15"></maxLength>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="PatientID">
+    	<restriction base="int">
+    		<pattern value="[1-9]*"></pattern>
+    	</restriction>
+    </simpleType>
+
+    <simpleType name="GenderMF">
+    	<restriction base="string">
+    		<enumeration value="M"></enumeration>
+    		<enumeration value="F"></enumeration>
+    	</restriction>
+    </simpleType>
+
+    <complexType name="Insurance">
+    	<all>
+    		<element name="provider" type="string"></element>
+    		<element name="limit" type="int"></element>
+    	</all>
+    </complexType>
+
+    <complexType name="Payment">
+    	<choice>
+    		<element name="cash" type="int"></element>
+    		<element name="Insurance" type="tns:Insurance"></element>
+    	</choice>
+    </complexType>
+</schema>

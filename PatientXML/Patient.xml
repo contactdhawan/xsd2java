@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Patient xmlns:tns="http://www.anirudhdhawan.org/Patient"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.anirudhdhawan.org/Patient Patient.xsd " id="1234">
+	<tns:name>tns:name</tns:name>
+	<tns:age>0</tns:age>
+	<tns:dob>2001-01-01</tns:dob>
+	<tns:email>tns:email</tns:email>
+	<tns:gender>M</tns:gender>
+	<tns:phone>tns:phone</tns:phone>
+	<tns:paymentOptions>
+		<tns:cash>0</tns:cash>
+	</tns:paymentOptions>
+</tns:Patient>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.anirudh.org/user"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.anirudh.org/user">
+
+	<complexType name="UserDetail">
+		<sequence>
+			<element name="name" type="string"></element>
+			<element name="address" type="tns:Address"></element>
+			<element name="email" type="string"></element>
+		</sequence>
+	</complexType>
+
+    <complexType name="Address">
+    	<sequence>
+    		<element name="streetAddress" type="string"></element>
+    		<element name="city" type="string"></element>
+    		<element name="county" type="string"></element>
+    		<element name="state" type="string"></element>
+    		<element name="zipcode" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>
